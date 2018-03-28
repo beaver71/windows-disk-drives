@@ -15,8 +15,6 @@ $ npm i -S windows-disk-drives
 
 ## Usage
 
-### letters & lettersSync
-
 Get a list of all available disk drives:
 
 **JSON array**
@@ -29,7 +27,9 @@ dsk.getDisks(false).then((disks) => {
 });
 ```
 
-```JSON
+Output:
+
+```js
 [ { Node: 'SMARTPC',
     Caption: 'C:',
     Description: 'Local Fixed Disk',
@@ -50,7 +50,9 @@ dsk.getDisks(true).then((stdout) => {
 });
 ```
 
-```output
+Output:
+
+```text
 Node,Caption,Description,Size,VolumeName,VolumeSerialNumber
 SMARTPC,C:,Local Fixed Disk,207086415872,,745CF3C0
 SMARTPC,D:,Local Fixed Disk,48497684480,Local Disk,884B41B5
