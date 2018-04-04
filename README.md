@@ -1,6 +1,6 @@
 # windows-disk-drives
 
-> Get a list of available disk drives on Windows OS.
+Get a list of available disk drives on Windows OS.
 
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/b707ardgrdf0lwa3?svg=true)](https://ci.appveyor.com/project/beaver71/windows-disk-drives)
 [![NPM version](https://img.shields.io/npm/v/windows-disk-drives.svg?style=flat-square)](https://www.npmjs.com/package/windows-disk-drives)
