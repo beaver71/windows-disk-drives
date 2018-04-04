@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "List of available disk drives on Windows OS",
   "license": "MIT",
-  "repository": "beaver71/windows-drive-letters",
+  "repository": "beaver71/windows-disk-drives",
   "author": {
     "name": "beaver71",
     "url": ""
@@ -48,10 +48,7 @@
         2,
         "always"
       ],
-      "linebreak-style": [
-        "off",
-        "unix"
-      ],
+	  "linebreak-style": ["off", "unix"],
       "babel/object-curly-spacing": 0,
       "space-before-function-paren": [
         2,
