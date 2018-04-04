@@ -1,9 +1,9 @@
 'use strict';
 
 const childProcess = require('child_process');
-const csvjson = require('csvjson');
+const tableParser = require('table-parser');
 
-const command = 'wmic logicaldisk get volumeserialnumber,caption,volumename,description,size /format:csv';
+const command = 'wmic logicaldisk get volumeserialnumber,caption,volumename,description,size';
 
 function getDisks(raw) {
   return new Promise((resolve, reject) => {
@@ -12,19 +12,19 @@ function getDisks(raw) {
 			return reject(err);
 		}
 
-		if (stdout.indexOf('\r\n') === 1) {
-			// remove first line (only \r\n)
-			stdout = stdout.split('\n').slice(1).join('\n');
-		}
-
 		if (raw) {
 			resolve(stdout);
 		} else {
-			var options = {
-				delimiter: ',', // optional
-				quote: '' // optional
-			};
-			var disks = csvjson.toObject(stdout, options);
+			var disks = tableParser.parse(stdout);
+			try {
+				for (var i in disks) {
+					for (var k in disks[i]) {
+						disks[i][k] = disks[i][k].join(' ');
+					}
+				}				
+			} catch(e) {
+				
+			}
 			resolve(disks);
 		}
     });
