@@ -1,32 +1,16 @@
 'use strict';
 
 const childProcess = require('child_process');
-const tableParser = require('table-parser');
 
-const command = 'wmic logicaldisk get volumeserialnumber,caption,volumename,description,size';
+const command = 'Get-CimInstance Win32_LogicalDisk | Select-Object SystemName,Caption,Description,VolumeName,VolumeSerialNumber,Size,DriveType,FileSystem  | ConvertTo-Json';
 
-function getDisks(raw) {
+function getDisks() {
   return new Promise((resolve, reject) => {
-    childProcess.exec(command, (err, stdout) => {
+    childProcess.exec(command, {'shell':'powershell.exe'}, (err, stdout) => {
 		if (err) {
 			return reject(err);
 		}
-
-		if (raw) {
-			resolve(stdout);
-		} else {
-			var disks = tableParser.parse(stdout);
-			try {
-				for (var i in disks) {
-					for (var k in disks[i]) {
-						disks[i][k] = disks[i][k].join(' ');
-					}
-				}				
-			} catch(e) {
-				
-			}
-			resolve(disks);
-		}
+		resolve(stdout);
     });
   });
 }
