@@ -17,7 +17,7 @@ Get a list of all available disk drives:
 **JSON array**
 
 ```js
-dsk.getDisks(false).then((disks) => {
+dsk.getDisks().then((disks) => {
 	console.log(disks);
 }).catch((err) => {
 	console.error(err);
@@ -27,40 +27,33 @@ dsk.getDisks(false).then((disks) => {
 Output:
 
 ```js
-[ { Node: 'SMARTPC',
-    Caption: 'C:',
-    Description: 'Local Fixed Disk',
-    Size: '207086415872',
-    VolumeName: '',
-    VolumeSerialNumber: '745CF3C0' },
-    ...
+[
+    {
+        "SystemName":  "SMART",
+        "Caption":  "C:",
+        "Description":  "Local Fixed Disk",
+        "VolumeName":  "data",
+        "VolumeSerialNumber":  "AF3AE71A",
+        "Size":  1000186310656,
+        "DriveType":  3,
+        "FileSystem":  "NTFS"
+    },
+    {
+        "SystemName":  "SMART",
+        "Caption":  "D:",
+        "Description":  "Removable Disk",
+        "VolumeName":  "KING_GOLD",
+        "VolumeSerialNumber":  "13501604",
+        "Size":  7740706816,
+        "DriveType":  2,
+        "FileSystem":  "FAT32"
+    }
 ]
 ```
 
-**RAW standard output (text)**
-
-```js
-dsk.getDisks(true).then((stdout) => {
-	console.log(stdout);
-}).catch((err) => {
-	console.error(err);
-});
-```
-
-Output:
-
-```text
-Node,Caption,Description,Size,VolumeName,VolumeSerialNumber
-SMARTPC,C:,Local Fixed Disk,207086415872,,745CF3C0
-SMARTPC,D:,Local Fixed Disk,48497684480,Local Disk,884B41B5
-SMARTPC,E:,CD-ROM Disc,,,
-SMARTPC,F:,Removable Disk,31406964736,KINGSTON,D509194D
-```
 
 
-## Changelog
 
-See the [Releases section of our GitHub project](https://github.com/beaver71/windows-disk-drives/releases) for changelogs for each release version.
 
 ## License
 
